@@ -10,6 +10,7 @@ env:
   GCP_PROJECT: discord-bartender-263921
   GCP_ZONE: us-central
   GAE_NAME: apps/discord-bartender-263921
+  service_account_key: ${{ secrets.GCP_SA_KEY }}
 
 jobs:
   setup-build-publish-deploy:
@@ -24,12 +25,9 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '270.0.0'
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
 
     # Test gcp sa connection
     - run: |
-        # Set up docker to authenticate
-        # via gcloud command-line tool.
         gcloud info
 
   terraform:
@@ -40,28 +38,32 @@ jobs:
         - name: 'Checkout'
           uses: actions/checkout@master
 
-        - name: 'Terraform Format'
+        - run: |
+          # Set Terraform Environment
+          echo $GCP_SA_KEY | base64 -d > tf/account.json
+
+        - name: Terraform Format
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'fmt'
 
-        - name: 'Terraform Init'
+        - name: Terraform Init
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'init'
 
-        - name: 'Terraform Validate'
+        - name: Terraform Validate
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'validate'
 
-        - name: 'Terraform Plan'
+        - name: Terraform Plan
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
