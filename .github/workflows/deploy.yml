@@ -38,9 +38,10 @@ jobs:
         - name: Checkout
           uses: actions/checkout@master
 
-        - run: |
-          # Set Terraform Environment
-          echo $GCP_SA_KEY | base64 -d > tf/account.json
+        - name: 'Set Terraform Environment'
+          run: |
+            # Set Terraform Environment
+            echo $GCP_SA_KEY | base64 -d > tf/account.json
 
         - name: 'Terraform Format'
           uses: hashicorp/terraform-github-actions@master
