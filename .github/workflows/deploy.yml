@@ -35,35 +35,35 @@ jobs:
       runs-on: ubuntu-latest
       steps:
 
-        - name: 'Checkout'
+        - name: Checkout
           uses: actions/checkout@master
 
         - run: |
           # Set Terraform Environment
           echo $GCP_SA_KEY | base64 -d > tf/account.json
 
-        - name: Terraform Format
+        - name: 'Terraform Format'
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'fmt'
 
-        - name: Terraform Init
+        - name: 'Terraform Init'
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'init'
 
-        - name: Terraform Validate
+        - name: 'Terraform Validate'
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
             tf_actions_working_dir: 'tf/'
             tf_actions_subcommand: 'validate'
 
-        - name: Terraform Plan
+        - name: 'Terraform Plan'
           uses: hashicorp/terraform-github-actions@master
           with:
             tf_actions_version: 0.12.18
