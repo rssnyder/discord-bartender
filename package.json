@@ -1,0 +1,28 @@
+{
+  "name": "discord-bartender",
+  "version": "1.0.0",
+  "description": "a discord bot to serve drinks and bad jokes",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr-Schneider/discord-bartender.git"
+  },
+  "author": "Riley Snyder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mr-Schneider/discord-bartender/issues"
+  },
+  "homepage": "https://github.com/Mr-Schneider/discord-bartender#readme",
+  "scripts": {
+    "start": "node server.js"
+  }
+
+}
