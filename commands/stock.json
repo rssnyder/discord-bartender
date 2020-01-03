@@ -6,8 +6,15 @@
 		"budwiser"
 	],
 	"wine" : [
-		"Cabernet",
-		"moscato"
+		"cabernet",
+		"moscato",
+		"merlot",
+		"chardonnay",
+		"pinot-noir",
+		"malbec",
+		"pinot-Grigio",
+		"riesling",
+		"sauvignon-blanc"
 	],
 	"liquor" : [
 		"gin",
