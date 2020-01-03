@@ -31,12 +31,12 @@ module.exports = {
 						console.log(product)
 						t.cell('Date', product.time)
 						t.cell('Description', product.name)
-						t.cell('Price, USD', product.price, Table.number(2))
+						t.cell('Price, DOGE', product.price, Table.number(2))
 						total += product.price
 						t.newRow()
 					})
 
-					message.reply(`\n\`\`\`${t.toString()}\nTotal: $${total}\`\`\`\n\n`)
+					message.reply(`\n\`\`\`${t.toString()}\nTotal: ${total}D\`\`\`\n\n`)
 				}  
             
                 

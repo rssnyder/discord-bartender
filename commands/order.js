@@ -10,6 +10,11 @@ module.exports = {
 		let user = fs.collection(message.channel.guild.name).doc(`${message.author.username}${message.author.discriminator}`)
 		let tab = user.collection('tab');
 
+		// Set user to active
+		let active = user.set({
+			active: true
+		}, {merge: true});
+
 		// Check for open tab
 		let tabStatus = user.get().then(function(doc) {
 			let billAmount = doc.data().bill
@@ -41,7 +46,7 @@ module.exports = {
 						// Deliver
 						message.reply(` one ${type}, ${sayings[Math.floor(Math.random()*sayings.length)]} :beer:`);
 					} else if (type === 'menu') {
-						
+
 						message.reply(` here's what we got: ${beer.toString()}`);
 					} else {
 
