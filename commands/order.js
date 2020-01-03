@@ -72,7 +72,7 @@ module.exports = {
 						let time = new Date(Date.now());
 						let chargeTab = tab.doc(`${Date.now()}`).set({
 							'type': 'mixed drink',
-							'name': `${liquor} ${mix}`,
+							'name': `${type} ${mix}`,
 							'price': 4.00,
 							'quantity': 'pint',
 							'time': `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
