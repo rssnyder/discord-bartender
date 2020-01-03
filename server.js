@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const Discord = require('discord.js');
+const admin = require('firebase-admin');
 const app = express();
 
 // GAE
@@ -14,7 +15,7 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
 
-// Setup discord connections
+// Setup discord connection
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
@@ -28,6 +29,12 @@ for (const file of commandFiles) {
 // Read bot config
 const { prefix, token } = require('./config.json');
 
+// Setup firestore connection
+admin.initializeApp({
+  credential: admin.credential.applicationDefault()
+});
+const db = admin.firestore();
+
 client.once('ready', () => {
         console.log('Ready!');
 });
@@ -38,7 +45,7 @@ client.on('message', message => {
         // Only bot commands, from humans
         if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-        console.log(`command: ${message.content}`)
+        console.log(`command: ${message.content}`);
 
         // Create array with command details
         const args = message.content.slice(prefix.length).split(/ +/);
@@ -46,14 +53,15 @@ client.on('message', message => {
 
         // Check if command exists
         if (!client.commands.has(command)) {
-                message.reply(" what kind of bar do you think this is?")
+                message.reply(" what kind of bar do you think this is?");
                 return
         }
 
         try {
-                client.commands.get(command).execute(message, args);
+                client.commands.get(command).execute(message, args, db);
         } catch (error) {
                 console.error(error);
                 message.reply(` sorry I am about to clock out`);
+                //throw new Error(error.message)
         }
 });

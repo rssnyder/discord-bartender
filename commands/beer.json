@@ -1,12 +1,11 @@
 {
 	"stock" : [
-		"high life",
-		"miller lite",
-		"michelob ultra",
+		"high-life",
+		"miller-lite",
+		"michelob-ultra",
 		"budwiser"
 	],
 	"sayings": [
-		"on the house",
 		"coming right up",
 		"that'll be $2.50",
 		"here ya go",

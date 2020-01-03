@@ -1,0 +1,34 @@
+module.exports = {
+	name: 'tab',
+	description: 'Pay up!',
+	execute(message, args, fs) {
+		const admin = require('firebase-admin');
+
+		// Get user information
+		let tab = fs.collection(message.channel.guild.name).doc(`${message.author.username}${message.author.discriminator}`).collection('tab');
+
+		let command = args[0];
+		if (command === 'show') {
+
+            let openTab = '';
+            let open = tab.where('paid', '!=', true).get().then(snapshot => {
+                if (snapshot.empty) {
+                    message.reply(' you are all paid up my friend');
+                    return
+                }  
+            
+                snapshot.forEach(doc => {
+                    let openTab = openTab.concat(doc.data());
+                });
+            }).catch(err => {
+                message.reply(' I cant seem to find you in the system, check back later');
+            });
+
+			message.reply(` here's what we got: ${openTab}`);
+		} else {
+			
+			// Unknown command
+			message.reply(` couldn't really understand you, say again?`);
+		}
+	},
+};
