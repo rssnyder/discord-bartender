@@ -86,4 +86,4 @@ jobs:
 
     - name: Push GAE App
       run: |
-        gcloud app deploy --promote --stop-previous-version --version=bartender-devvv --quiet
+        gcloud app deploy --promote --stop-previous-version --version=bartender-main --quiet
