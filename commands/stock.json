@@ -1,0 +1,33 @@
+{
+	"beer" : [
+		"high-life",
+		"miller-lite",
+		"michelob-ultra",
+		"budwiser"
+	],
+	"wine" : [
+		"Cabernet",
+		"moscato"
+	],
+	"liquor" : [
+		"gin",
+		"whiskey",
+		"rum",
+		"vodka",
+		"vodka",
+		"jack"
+	],
+	"mixers" : [
+		"coke",
+		"lemonaid",
+		"tonic",
+		"water",
+		"sprite"
+	],
+	"sayings": [
+		"coming right up",
+		"that'll be $2.50",
+		"here ya go",
+		"I'll put it on your tab"
+	]
+}
