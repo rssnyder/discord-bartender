@@ -107,3 +107,7 @@ dist
 
 tf/.terraform*
 tf/terraform*
+
+## GCP
+
+config.json

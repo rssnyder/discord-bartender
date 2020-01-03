@@ -11,6 +11,7 @@ env:
   GCP_ZONE: us-central
   GAE_NAME: apps/discord-bartender-263921
   service_account_key: ${{ secrets.GCP_SA_KEY }}
+  BARTENDER_CONFIG: ${{ secrets.BARTENDER_CONFIG }}
 
 jobs:
   terraform:
@@ -78,6 +79,10 @@ jobs:
     - name: Set project
       run: |
         gcloud config set project $GCP_PROJECT
+
+    - name: Set config
+      run: |
+        echo $BARTENDER_CONFIG | base64 -d > config.json
 
     - name: Push GAE App
       run: |

@@ -4,11 +4,11 @@
   "description": "a discord bot to serve drinks and bad jokes",
   "main": "server.js",
   "dependencies": {
+    "discord.js": "^11.5.1",
     "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
@@ -20,9 +20,5 @@
   "bugs": {
     "url": "https://github.com/Mr-Schneider/discord-bartender/issues"
   },
-  "homepage": "https://github.com/Mr-Schneider/discord-bartender#readme",
-  "scripts": {
-    "start": "node server.js"
-  }
-
+  "homepage": "https://github.com/Mr-Schneider/discord-bartender#readme"
 }
