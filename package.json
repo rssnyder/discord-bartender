@@ -4,9 +4,15 @@
   "description": "a discord bot to serve drinks and bad jokes",
   "main": "server.js",
   "dependencies": {
+    "bitcoinjs-lib": "^5.1.6",
+    "bs58check": "^2.1.2",
+    "coininfo": "^5.1.0",
+    "coinkey": "^3.0.0",
     "discord.js": "^11.5.1",
+    "easy-table": "^1.1.1",
     "express": "^4.17.1",
-    "firebase-admin": "^8.9.0"
+    "firebase-admin": "^8.9.0",
+    "https": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
