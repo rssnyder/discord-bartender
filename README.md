@@ -1,13 +1,13 @@
 # discord-bartender
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FMr-Schneider%2Fdiscord-bartender%2Fbadge&style=flat)](https://actions-badge.atrox.dev/Mr-Schneider/discord-bartender/goto)
 
-discord bot to serve drinks and terrible jokes
+discord bot to serve drinks, terrible jokes, and bills with dogecoin
 
 ## Commands
 
 ### Order
 ```
-!order
+!order <family> <type or "menu">
 ```
 Order a drink! Item will be added to your tab if the purchase is successful.
 
@@ -34,7 +34,7 @@ Check your tab, and pay it if you feel like!
 
 #### Show
 ```
-!tab show
+!tab
 ```
 Take a look at what you have ordered so far.
 
@@ -53,6 +53,18 @@ This will close out your tab, and present you with a dogecoin address to send pa
 
 This is currently written to deploy to Google Cloud using Google App Engine. It could esily be modified to run another way.
 
+### Config File
+
+To start, fill in `config.json`:
+```
+{
+	"prefix": "!",
+	"token": "[DISCORD_BOT_TOKEN]"
+}
+```
+
+Whether self hosted or in "the cloud" you will need to set up a firebase project tied to your google cloud project. Firestore is the databse used in this project so that will need to be set up in your project.
+
 ### GCP
 
 To deploy, sign into the gcloud cli.
@@ -65,15 +77,7 @@ This will deploy with only one version tag, and due to the app.yml there will on
 
 ### Self Hosted
 
-Run run locally, simply fill in `config.json`:
-```
-{
-	"prefix": "!",
-	"token": "[DISCORD_BOT_TOKEN]"
-}
-```
-
-Then change (in `server.js`):
+Run run locally, simply change (in `server.js`):
 ```
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
