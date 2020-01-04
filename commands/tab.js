@@ -13,7 +13,7 @@ module.exports = {
 		let user = fs.collection(message.channel.guild.name).doc(`${message.author.username}${message.author.discriminator}`)
 
 		let command = args[0];
-		if (command === 'show') {
+		if (args.length == 0) {
 
 			// Get unpaid items on tab
             let open = user.collection('tab').where('paid', '==', false).get().then(snapshot => {
@@ -36,7 +36,7 @@ module.exports = {
 						t.newRow()
 					})
 
-					message.reply(`\n\`\`\`${t.toString()}\nTotal: ${total}D\`\`\`\n\n`)
+					message.reply(`\n\`\`\`${t.toString()}\nTotal: D${total}\`\`\`\n\n`)
 				}  
             
                 

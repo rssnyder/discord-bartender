@@ -48,3 +48,48 @@ This will close out your tab, and present you with a dogecoin address to send pa
 ```
 !help
 ```
+
+## Deployment
+
+This is currently written to deploy to Google Cloud using Google App Engine. It could esily be modified to run another way.
+
+### GCP
+
+To deploy, sign into the gcloud cli.
+
+Sign in with a user account `gcloud auth login` or if you have a service account file, `gcloud auth activate-service-account --key-file [KEY_FILE]`
+
+Once authenticated, `gcloud app deploy --promote --stop-previous-version --version=<version name> --quiet`
+
+This will deploy with only one version tag, and due to the app.yml there will only be one instance, so every time you deploy your newest version will be the only version running. If you get too many different versions, you can use the `clean` script to clean them up `clean <service (usually "default")> <# of versions to keep>`
+
+### Self Hosted
+
+Run run locally, simply fill in `config.json`:
+```
+{
+	"prefix": "!",
+	"token": "[DISCORD_BOT_TOKEN]"
+}
+```
+
+Then change (in `server.js`):
+```
+admin.initializeApp({
+  credential: admin.credential.applicationDefault()
+});
+```
+
+To:
+```
+let serviceAccount = require('[KEY_FILE]');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+```
+
+Then you can start the server
+```
+node server.js
+```

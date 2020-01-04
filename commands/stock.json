@@ -3,7 +3,8 @@
 		"high-life",
 		"miller-lite",
 		"michelob-ultra",
-		"budwiser"
+		"budwiser",
+		"duff"
 	],
 	"wine" : [
 		"cabernet",
@@ -32,9 +33,9 @@
 		"sprite"
 	],
 	"sayings": [
-		"coming right up",
-		"that'll be $2.50",
-		"here ya go",
-		"I'll put it on your tab"
+		"coming right up!",
+		"another one so soon?",
+		"here ya go!",
+		"I'll put it on your tab."
 	]
 }

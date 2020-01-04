@@ -18,16 +18,16 @@ module.exports = {
 		// Check for open tab
 		let tabStatus = user.get().then(function(doc) {
 			let billAmount = doc.data().bill
-			if (billAmount > 0.0) {
+			if ((typeof billAmount !== 'undefined') && (billAmount > 0.0)) {
 
 				// There is already a bill
 				message.reply(` your closed bill is $${billAmount}. Please pay before ordering more.`)
 			} else {
 
-				let command = args[0];
+				let command = args[0].toLowerCase();
 				if (command === 'beer') {
 
-					let type = args[1];
+					let type = args[1].toLowerCase();
 					if (beer.includes(type)) {
 			
 						// Charge tab
@@ -55,7 +55,7 @@ module.exports = {
 
 				} else if (command === 'wine') {
 
-					let type = args[1];
+					let type = args[1].toLowerCase();
 					if (wine.includes(type)) {
 			
 						// Charge tab
@@ -83,12 +83,12 @@ module.exports = {
 
 				} else if (command === 'liquor') {
 
-					let type = args[1];
+					let type = args[1].toLowerCase();
 					if(liquor.includes(type)) {
 
 						if (args.length > 2) {
 
-							let mix = args[2]
+							let mix = args[2].toLowerCase()
 							if(mixers.includes(mix)) {
 
 								// Charge tab

@@ -11,9 +11,9 @@ Order a drink!
 For an example: \`!order beer high-life\` to order the champane of beers
 
 Pay your tab!
-\`!tab <show/pay>\`
+\`!tab <pay>\`
 
-For an example: \`!tab show\` to see your current tab
+For an example: \`!tab\` to see your current tab
             or: \`!tab pay\` to close your tab, then do the same command again once you have paid
         `)
 	},
